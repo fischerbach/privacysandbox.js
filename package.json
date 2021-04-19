@@ -1,0 +1,25 @@
+{
+  "name": "privacysandbox",
+  "version": "1.0.0",
+  "description": "tbd",
+  "main": "src/privacysandbox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "http-server ./src/",
+    "build": "browserify src/privacysandbox.js -o dist/privacysandbox.min.js && uglifyjs --compress --mangle --output dist/privacysandbox.min.js -- dist/privacysandbox.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fischerbach/privacysandbox.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fischerbach/privacysandbox.js/issues"
+  },
+  "homepage": "https://github.com/fischerbach/privacysandbox.js#readme",
+  "dependencies": {
+    "simhash": "^0.1.0",
+    "uglify-js": "^3.13.4"
+  }
+}
