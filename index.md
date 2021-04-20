@@ -1,37 +1,40 @@
-## Welcome to GitHub Pages
+# privacysandbox.js
 
-You can use the [editor on GitHub](https://github.com/fischerbach/privacysandbox.js/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This JS library contains my experiments around Google Chrome's Privacy Sandbox.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I have not yet decided which way this is going. 
+Currently, it tries to bring some Privacy Sandbox APIs to unsupported browsers, such as Firefox, Safari or... Chrome :)
 
-### Markdown
+## Usage
+```html
+<script src='privacysandbox.min.js'></script>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Privacy Sandbox
 
-### Jekyll Themes
+### Federated Learning of Cohorts
+This implementation stores user browsing history in localStorage (only within one domain) and generates cohort_id using simhash algorithm.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/fischerbach/privacysandbox.js/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+After including `privacysandbox.min.js` file on website, library checks if `document.interestCohort` API is available. If not, replaces it with custom implementation `PrivacySandbox.floc.interestCohort`.
 
-### Support or Contact
+You can force such behaviour by using:
+```js
+PrivacySandbox.force();
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+You can also disable FLoC:
+```js
+PrivacySandbox.floc.disable();
+
+// or pass fixed cohort id:
+PrivacySandbox.floc.disable('437737');
+```
+
+## TODO
+- [ ] remove browserify and simhash dependency
+- [ ] add cross-domain storage libraries drop-in
+- [ ] implement rest of APIs
+### FLoC
+- [ ] frequency of cohort_id recreating
+- [ ] custom cohort function
