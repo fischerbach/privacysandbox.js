@@ -23,6 +23,14 @@ You can force such behaviour by using:
 PrivacySandbox.force();
 ```
 
+You can also disable FLoC:
+```js
+PrivacySandbox.floc.disable();
+
+// or pass fixed cohort id:
+PrivacySandbox.floc.disable('437737');
+```
+
 ## TODO
 - [ ] remove browserify and simhash dependency
 - [ ] add cross-domain storage libraries drop-in
