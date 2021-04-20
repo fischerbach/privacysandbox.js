@@ -79,8 +79,12 @@
 <script>
     PrivacySandbox.force();
     (async ()=> {
-        const cohort = await document.interestCohort();
-        document.querySelector("#cohort_id").textContent = cohort.id;
+        try {
+            const cohort = await document.interestCohort();
+            document.querySelector("#cohort_id").textContent = cohort.id;
+        }catch(e) {
+            console.log(e);
+        }
     })();
 
     window.addEventListener('hashchange', function() {

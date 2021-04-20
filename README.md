@@ -27,4 +27,6 @@ PrivacySandbox.force();
 - [ ] remove browserify and simhash dependency
 - [ ] add cross-domain storage libraries drop-in
 - [ ] implement rest of APIs
+### FLoC
 - [ ] frequency of cohort_id recreating
+- [ ] custom cohort function

@@ -25,6 +25,18 @@ var PrivacySandbox = (function() {
 					document.interestCohort = _interestCohort
 				}
 				return _interestCohort();
+			},
+			disable: function(default_cohort_id) {
+				if(typeof default_cohort_id === 'string') {
+					document.interestCohort = async function() {
+						return {
+							id: default_cohort_id,
+							version: 'no-algorithm/v1'
+						}
+					}
+				} else {
+					document.interestCohort = undefined;
+				}
 			}
 		},
 		force: function() {
