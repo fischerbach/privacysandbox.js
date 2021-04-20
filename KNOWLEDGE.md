@@ -32,3 +32,16 @@ document.interestCohort = function(){
 })();
 ```
 Source: https://www.reddit.com/r/adops/comments/mu7mxu/floc_is_getting_a_lot_of_flak
+
+### Trust Token API
+https://www.chromestatus.com/feature/5078049450098688
+
+https://docs.google.com/document/d/1qUjtKgA7nMv9YGMhi0xWKEojkSITKzGLdIcZgoz6ZkI/edit
+
+https://docs.google.com/document/d/1TNnya6B8pyomDK2F1R9CL3dY10OAmqWlnCxsWyOBDVQ/edit
+
+https://www.chromium.org/updates/trust-token
+https://github.com/WICG/trust-token-api/blob/main/README.md
+
+Trust Token API Explainer:\
+https://github.com/WICG/trust-token-api/blob/main/README.md

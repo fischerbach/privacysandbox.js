@@ -38,3 +38,4 @@ PrivacySandbox.floc.disable('437737');
 ### FLoC
 - [ ] frequency of cohort_id recreating
 - [ ] custom cohort function
+- [ ] storage mechanism for detected cohort id
