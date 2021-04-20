@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "http-server ./src/",
-    "build": "browserify src/privacysandbox.js -o dist/privacysandbox.min.js && uglifyjs --compress --mangle --output dist/privacysandbox.min.js -- dist/privacysandbox.min.js"
+    "build": "browserify src/privacysandbox.js -o dist/privacysandbox.min.js && uglifyjs --compress --mangle --output dist/privacysandbox.min.js -- dist/privacysandbox.min.js",
+    "watch": "watchify src/privacysandbox.js -o 'uglifyjs --compress --mangle > dist/privacysandbox.min.js'",
+    "dev-server": "watch-http-server ./dist & watchify src/privacysandbox.js -o 'uglifyjs --compress --mangle > dist/privacysandbox.min.js'"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,8 @@
   "dependencies": {
     "simhash": "^0.1.0",
     "uglify-js": "^3.13.4"
+  },
+  "devDependencies": {
+    "watchify": "^4.0.0"
   }
 }
