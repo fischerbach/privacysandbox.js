@@ -1,5 +1,7 @@
 # privacysandbox.js
 
+Repository: https://github.com/fischerbach/privacysandbox.js
+
 This JS library contains my experiments around Google Chrome's Privacy Sandbox.
 
 I have not yet decided which way this is going. 
