@@ -6,21 +6,40 @@ I have not yet decided which way this is going.
 Currently, it tries to bring some Privacy Sandbox APIs to unsupported browsers, such as Firefox, Safari or... Chrome :)
 
 ## Usage
+### Browser
 ```html
 <script src='privacysandbox.min.js'></script>
-
 ```
+
+### Server
+```sh
+npm install
+#for starting Express server:
+node server.js
+
+#or, for development:
+npm run serve
+```
+
 
 ## Privacy Sandbox
 
 ### Federated Learning of Cohorts
 This implementation stores user browsing history in localStorage (only within one domain) and generates cohort_id using simhash algorithm.
 
-After including `privacysandbox.min.js` file on website, library checks if `document.interestCohort` API is available. If not, replaces it with custom implementation `PrivacySandbox.floc.interestCohort`.
-
-You can force such behaviour by using:
+After including `privacysandbox.min.js` file on website, you can get cohort id of the user:
 ```js
-PrivacySandbox.force();
+(async () => {
+    cohort = await PrivacySandbox.floc.interestCohort();
+    url = new URL("https://ads.example/getCreative");
+    url.searchParams.append("cohort", cohort);
+    creative = await fetch(url);
+})();
+```
+
+You can replace (or initialize) FLoC API:
+```js
+PrivacySandbox.floc.force();
 ```
 
 You can also disable FLoC:
@@ -30,12 +49,3 @@ PrivacySandbox.floc.disable();
 // or pass fixed cohort id:
 PrivacySandbox.floc.disable('437737');
 ```
-
-## TODO
-- [ ] remove browserify and simhash dependency
-- [ ] add cross-domain storage libraries drop-in
-- [ ] implement rest of APIs
-### FLoC
-- [ ] frequency of cohort_id recreating
-- [ ] custom cohort function
-- [ ] storage mechanism for detected cohort id

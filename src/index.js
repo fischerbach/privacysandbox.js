@@ -1,9 +1,14 @@
-var simhash = require('simhash')();
+// import {simhash} from 'simhash';
 
-var PrivacySandbox = (function() {
+const sjs = require('simhash-js');
+const simhash = new sjs.SimHash();
+
+// console.log(simhash.hash("This is a test of the Emergency Blogcast System"));
+
+const PrivacySandbox = (function() {
 	async function _generateCohort(){
 		var history = Object.keys(localStorage);
-		var cohort_id = parseInt(simhash(history).join(""), 2);
+		var cohort_id = simhash.hash( history.sort().join("|") );
 		return cohort_id;
 	}
 
@@ -37,17 +42,13 @@ var PrivacySandbox = (function() {
 				} else {
 					document.interestCohort = undefined;
 				}
-			}
+			},
+            force: function() {
+                document.interestCohort = PrivacySandbox.floc.interestCohort;
+            }
 		},
-		force: function() {
-			document.interestCohort = PrivacySandbox.floc.interestCohort;
-		}
 	};
 
 })();
 
-window.PrivacySandbox = PrivacySandbox;
-
-if (typeof document.interestCohort === "undefined") {
-	document.interestCohort = PrivacySandbox.floc.interestCohort;
-}
+module.exports = PrivacySandbox;

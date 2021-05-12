@@ -1,30 +1,36 @@
 {
-  "name": "privacysandbox",
-  "version": "1.0.0",
-  "description": "tbd",
-  "main": "src/privacysandbox.js",
+  "name": "privacysandbox.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/privacysandbox.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "http-server ./src/",
-    "build": "browserify src/privacysandbox.js -o dist/privacysandbox.min.js && uglifyjs --compress --mangle --output dist/privacysandbox.min.js -- dist/privacysandbox.min.js",
-    "watch": "watchify src/privacysandbox.js -o 'uglifyjs --compress --mangle > dist/privacysandbox.min.js'",
-    "dev-server": "watch-http-server ./dist & watchify src/privacysandbox.js -o 'uglifyjs --compress --mangle > dist/privacysandbox.min.js'"
+    "build": "npm run build-prod",
+    "watch": "npx webpack --watch",
+    "start": "npx webpack serve --open",
+    "server": "node server.js",
+
+    "build-prod": "npx webpack --env target=production --progress",
+    "build-dev": "npx webpack --env target=development --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fischerbach/privacysandbox.js.git"
   },
-  "author": "",
-  "license": "MIT",
+  "keywords": [],
+  "author": "Rafal Rybnik <rafalrybnik@yahoo.com> (https://fischerbach.net)",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/fischerbach/privacysandbox.js/issues"
   },
   "homepage": "https://github.com/fischerbach/privacysandbox.js#readme",
-  "dependencies": {
-    "simhash": "^0.1.0",
-    "uglify-js": "^3.13.4"
-  },
   "devDependencies": {
-    "watchify": "^4.0.0"
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.3.1",
+    "simhash-js": "^1.0.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-middleware": "^3.7.3",
+    "webpack-dev-server": "^3.11.2"
   }
 }

@@ -1,4 +1,4 @@
 node_modules
 dist/privacysandbox.min.js
-letsencrypt
-data
+dist/index.html
+.DS_Store
